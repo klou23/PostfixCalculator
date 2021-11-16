@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.StringTokenizer;
 
 public class PostfixCalculator {
@@ -11,8 +14,21 @@ public class PostfixCalculator {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        PostfixCalculator p = new PostfixCalculator();
+        p.test();
+    }
 
+    public void test() throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader("tests.txt"));
+        String s;
+        while((s=br.readLine()) != null){
+            double sol = pFix(s);
+            s = br.readLine();
+            double correct = Double.parseDouble(s);
+            if(sol == correct) System.out.println("Correct");
+            else System.out.println("Incorrect");
+        }
     }
 
     public double pFix(String str){
