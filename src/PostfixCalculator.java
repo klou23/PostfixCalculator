@@ -27,7 +27,7 @@ public class PostfixCalculator {
             s = br.readLine();
             double correct = Double.parseDouble(s);
             if(sol == correct) System.out.println("Correct");
-            else System.out.println("Incorrect");
+            else System.out.println("Incorrect"+sol);
         }
     }
 
@@ -38,8 +38,8 @@ public class PostfixCalculator {
         while(st.hasMoreTokens()){
             String token = st.nextToken();
             if(token.equals("+") || token.equals("-") || token.equals("*") || token.equals("/")){
-                double a = s.pop();
                 double b = s.pop();
+                double a = s.pop();
                 s.push(evaluate(a,b,token));
             }else{
                 s.push(Double.parseDouble(token));
